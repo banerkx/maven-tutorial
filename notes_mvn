@@ -1,0 +1,23 @@
+original url: https://github.com/marcobehlerjetbrains/maven-tutorial.git
+
+----------------------------------------------------------------------------------
+
+youtube: https://www.youtube.com/watch?v=Xatr8AZLOsE
+
+----------------------------------------------------------------------------------
+
+Install maven wrapper:
+
+  mvn wrapper:wrapper
+
+Installing mvn wrapper means that a maven installation is no longer needed on a computer
+when this repo is cloned. (files are installed in user's .m2 directory, see "mvnw -c" output
+
+----------------------------------------------------------------------------------
+
+"mvn validate" validate ./pom.xml
+
+----------------------------------------------------------------------------------
+
+
+
