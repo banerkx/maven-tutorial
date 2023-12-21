@@ -14,8 +14,8 @@
 <!-- <developerConnection> gives write access -->
 <!-- The gitlab CI/CD pre-defined environment variable CI_PROJECT_URL=https://gitlab.com/banerkx/git_template -->
 <!-- So reading in this pre-defined variable from the environment to get the project url. -->
-    <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection>
-<!--     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection> -->
+<!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
+    <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
   </scm>
 
   <properties>
