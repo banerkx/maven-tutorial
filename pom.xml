@@ -3,28 +3,41 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  
   <groupId>com.jetbrains.marco</groupId>
   <artifactId>maven-tutorial</artifactId>
   <version>1.0-SNAPSHOT</version>
-
+  
   <scm>
+<!-- See: https://maven.apache.org/maven-release/maven-release-plugin/usage.html -->
+<!-- To do a dry run, use: -->
+<!--     mvn release:prepare -DdryRun -->
+<!-- You will be prompted with the following 3 questions: -->
+<!--     What is the release version for "maven-tutorial"? (maven-tutorial) 1.0: : -->
+<!--     What is the SCM release tag or label for "maven-tutorial"? (maven-tutorial) maven-tutorial: -->
+<!--     What is the new development version for "maven-tutorial"? (maven-tutorial) 1.1-SNAPSHOT: -->
+<!-- The dry run will create the files: -->
+<!--     pom.xml.next -->
+<!--     pom.xml.releaseBackup -->
+<!--     pom.xml.tag -->
+<!--     release.properties -->
+<!-- ** For the dry run to succeed, it is necessary that all tracked files are committed. ** -->
 <!-- For use with the maven release plugin. -->
 <!-- <connection> gives read access -->
-<!-- <developerConnection> gives write access -->
+<!-- <developerConnection> gives read/write access -->
 <!-- The gitlab CI/CD pre-defined environment variable CI_PROJECT_URL=https://gitlab.com/banerkx/git_template -->
 <!-- So reading in this pre-defined variable from the environment to get the project url. -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
   </scm>
-
+  
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-
+    
     <junit.version>5.8.2</junit.version>
   </properties>
-
+  
   <build>
     <plugins>
       <plugin>
@@ -42,7 +55,7 @@
       </plugin>
     </plugins>
   </build>
-
+  
   <dependencies>
     <dependency>
       <groupId>com.mpatric</groupId>
@@ -69,6 +82,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
+  
 </project>
 
