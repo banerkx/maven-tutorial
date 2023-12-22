@@ -68,9 +68,9 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
+              <target>
                 <echo>project.scm.developerConnection = [${project.scm.developerConnection}]</echo>
-              </tasks>
+              </target>
             </configuration>
           </execution>
         </executions>
