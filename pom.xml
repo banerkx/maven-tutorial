@@ -16,6 +16,11 @@
 <!--     What is the new development version for "maven-tutorial"? (maven-tutorial) 1.1-SNAPSHOT: -->
 <!-- To accept the default values presented automatically, use: -->
 <!--   echo -e '\n\n\n' | mvn release:prepare -DdryRun -->
+<!--                   OR -->
+<!--   mvn [dash][dash]batch-mode release:prepare -DdryRun -->
+<!--     To check if there are any changes in the repository, use: -->
+<!--     git status [dash][dash]porcelain=1 | wc -l # if the line count is > 0, there are changes (includes both staged and unstaged) -->
+<!--     git  diff [dash][dash]exit-code > /dev/null 2>&amp;1 # if exit code != 0, there are unstaged changes  -->
 <!-- The dry run will create the files: -->
 <!--     pom.xml.next -->
 <!--     pom.xml.releaseBackup -->
