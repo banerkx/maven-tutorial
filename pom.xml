@@ -38,6 +38,7 @@
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
 <!-- To get the value of <developerConnection> from the command line with xmllint, use: -->
 <!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='scm']/*[local-name()='developerConnection']/text()" pom.xml -->
+    <tag>@{project.version}</tag>
   </scm>
 
   <properties>
@@ -62,6 +63,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>3.0.1</version>
         <configuration>
+          <tagNameFormat>@{project.version}</tagNameFormat>
 <!-- Do not want the maven plugin to fail if the following files are modified: -->
           <checkModificationExcludes>
             <checkModificationExclude>pom.xml</checkModificationExclude>
@@ -82,8 +84,6 @@
             </goals>
             <configuration>
               <target>
-                <echo>JAVA_HOME                       = [${java.home}]</echo>
-                <echo>MAVEN_HOME                      = [${maven.home}]</echo>
                 <echo>project.scm.developerConnection = [${project.scm.developerConnection}]</echo>
               </target>
             </configuration>
