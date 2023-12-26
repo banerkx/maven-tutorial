@@ -82,6 +82,8 @@
             </goals>
             <configuration>
               <target>
+                <echo>JAVA_HOME                       = [${java.home}]</echo>
+                <echo>MAVEN_HOME                      = [${maven.home}]</echo>
                 <echo>project.scm.developerConnection = [${project.scm.developerConnection}]</echo>
               </target>
             </configuration>
