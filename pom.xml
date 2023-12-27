@@ -36,15 +36,17 @@
 <!-- So reading in this pre-defined variable from the environment to get the project url. -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
-<!-- To get the value of <developerConnection> from the command line with xmllint, use: -->
-<!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='scm']/*[local-name()='developerConnection']/text()" pom.xml -->
     <tag>@{project.version}</tag>
   </scm>
 
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-
+    <encoding>UTF-8</encoding>
+    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+    <project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
+    <archetypeEncoding>${encoding}</archetypeEncoding>
     <junit.version>5.8.2</junit.version>
   </properties>
 
