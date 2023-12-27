@@ -1,11 +1,88 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
+################################################################################
+# Creating global .gitignore:                                                  #
+#   - create the file ~/.gitignore_global                                      #
+#   - execute git config --global core.excludesfile ~/.gitignore_global        #
+#                                                                              #
+# Removing the global .gitignore file:                                         #
+#   - git config --global --unset core.excludesfile                            #
+#                                                                              #
+# Editing global settings:                                                     #
+#   - git config --global --edit                                               #
+################################################################################
+*.a
+*.ali
+*.bundle
+*.class
+*.dot
+*.ear
+*.exe.stackdump
+*.gcda
+*.gcno
+*.gcov
+*.jar
+*.ld_debug.[0-9]*
+*.log
+*.o
+*.scan_clang
+*.svg
+*.tar
+*.tar.bz2
+*.tar.gz
+*.tar.xz
+*.txt
+*.war
+*.zip
+*/clang_analyzer_results/*
+*_bak
+*_doxygen.cfg
+*_gprof_results
+*_javadoc
+*_lcov_coverage.info
+*_man_Linux
+*~
+.*.swo
+.*.swp
+.buildpath
+.classpath
+.cproject
+.nfs*
+.project
+.pydevproject
+.settings
+.xcaGui
+/bin/
+bash.exe.stackdump
+bin/
+breaks
+callgrind.*
+core.*
+create_links
+dOxygen
+debug
+debug
+depends
+gcov_output
+gdb.txt
+gdb_history
+gmon.out
+lib*.a
+lib*.dylib
+lib*.so
+nbproject/*
+nohup.out
+nul
+package-lock.json
+package.json
 pom.xml.next
+pom.xml.releaseBackup
+pom.xml.tag
+qq
 release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+run
+target/
+vgcore.*
+
+!CMakeLists.txt
+!README.txt
+!license.txt
+!readme.txt
