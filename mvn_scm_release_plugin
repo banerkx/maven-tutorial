@@ -1,0 +1,32 @@
+  <scm>
+<!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
+<!-- To do a dry run, use: -->
+<!--     mvn release:prepare -DdryRun -->
+<!-- You will be prompted with the following 3 questions: -->
+<!--     What is the release version for "maven-tutorial"? (maven-tutorial) 1.0: : -->
+<!--     What is the SCM release tag or label for "maven-tutorial"? (maven-tutorial) maven-tutorial: -->
+<!--     What is the new development version for "maven-tutorial"? (maven-tutorial) 1.1-SNAPSHOT: -->
+<!-- To accept the default values presented automatically, use: -->
+<!--   echo -e '\n\n\n' | mvn release:prepare -DdryRun -->
+<!--                   OR -->
+<!--   mvn [dash][dash]batch-mode release:prepare -DdryRun -->
+<!--     To check if there are any changes in the repository, use: -->
+<!--     git status [dash][dash]porcelain=1 | wc -l # if the line count is > 0, there are changes (includes both staged and unstaged) -->
+<!--     git  diff [dash][dash]exit-code > /dev/null 2>&amp;1 # if exit code != 0, there are unstaged changes  -->
+<!-- The dry run will create the files: -->
+<!--     pom.xml.next -->
+<!--     pom.xml.releaseBackup -->
+<!--     pom.xml.tag -->
+<!--     release.properties -->
+<!-- To clean up after a failed release or a dry run, use: -->
+<!--     mvn release:clean -->
+<!-- ** This goal is performed automatically after a successful release. ** -->
+<!-- For use with the maven release plugin. -->
+<!-- <connection> gives read access -->
+<!-- <developerConnection> gives read/write access -->
+<!-- The gitlab CI/CD pre-defined environment variable CI_PROJECT_URL=https://gitlab.com/banerkx/git_template -->
+<!-- So reading in this pre-defined variable from the environment to get the project url. -->
+<!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
+    <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
+    <tag>@{project.version}</tag>
+  </scm>
