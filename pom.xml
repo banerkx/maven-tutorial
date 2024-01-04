@@ -4,12 +4,15 @@
 
   <groupId>com.jetbrains.marco</groupId>
   <artifactId>maven-tutorial</artifactId>
-  <version>1.1-SNAPSHOT</version>
+<!--   &#45; equals a dash -->
+<!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml -->
+  <version>1.0-SNAPSHOT</version>
 
   <scm>
 <!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
 <!-- To do a dry run, use: -->
 <!--     mvn release:prepare -DdryRun -->
+<!--     mvn release:perform -DdryRun -->
 <!-- You will be prompted with the following 3 questions: -->
 <!--     What is the release version for "maven-tutorial"? (maven-tutorial) 1.0: : -->
 <!--     What is the SCM release tag or label for "maven-tutorial"? (maven-tutorial) maven-tutorial: -->
