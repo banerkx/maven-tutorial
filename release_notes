@@ -7,7 +7,7 @@ creates
   pom.xml.releaseBackup: identical to original pom.xml
   pom.xml.tag: <version>1.0-SNAPSHOT</version> --> <version>1.0</version>
                <tag>@{project.version}</tag> --> <tag>1.0</tag>
-  release.properties: properties use dby release
+  release.properties: properties used by release
     #release configuration
     #Mon Jan 08 17:05:36 MST 2024
     projectVersionPolicyId=default
