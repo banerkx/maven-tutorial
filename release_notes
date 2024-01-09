@@ -1,0 +1,41 @@
+Dry Run:
+  mvn --batch-mode release:prepare -DdryRun
+
+All files must be committed unless listed in <checkModificationExcludes> ... </checkModificationExcludes>
+creates
+  pom.xml.next: <version>1.0-SNAPSHOT</version> --> <version>1.1-SNAPSHOT</version>
+  pom.xml.releaseBackup: identical to original pom.xml
+  pom.xml.tag: <version>1.0-SNAPSHOT</version> --> <version>1.0</version>
+               <tag>@{project.version}</tag> --> <tag>1.0</tag>
+  release.properties: properties use dby release
+    #release configuration
+    #Mon Jan 08 17:05:36 MST 2024
+    projectVersionPolicyId=default
+    scm.rollbackCommitComment=@{prefix} rollback the release of @{releaseLabel}
+    remoteTagging=true
+    scm.commentPrefix=[maven-release-plugin]
+    releaseStrategyId=default
+    scm.branchCommitComment=@{prefix} prepare branch @{releaseLabel}
+    pinExternals=false
+    completedPhase=end-release
+    scm.url=scm\:git\:https\://gitlab.com/banerkx/maven-tutorial.git
+    scm.developmentCommitComment=@{prefix} prepare for next development iteration
+    projectVersionPolicyConfig=<projectVersionPolicyConfig>${projectVersionPolicyConfig}</projectVersionPolicyConfig>\n
+    scm.tagNameFormat=@{project.version}
+    pushChanges=true
+    project.scm.com.jetbrains.marco\:maven-tutorial.developerConnection=scm\:git\:https\://gitlab.com/banerkx/maven-tutorial.git
+    project.rel.com.jetbrains.marco\:maven-tutorial=1.0
+    scm.tag=1.0
+    project.dev.com.jetbrains.marco\:maven-tutorial=1.1-SNAPSHOT
+    project.scm.com.jetbrains.marco\:maven-tutorial.tag=@{project.version}
+    exec.snapshotReleasePluginAllowed=false
+    preparationGoals=clean verify
+    scm.releaseCommitComment=@{prefix} prepare release @{releaseLabel}
+    exec.pomFileName=pom.xml
+-----------------------------------------------------------------------
+
+mvn release:perform -DdryRun
+
+shows:
+  the perform actions
+  deletes pom.xml.next, pom.xml.releaseBackup, pom.xml.tag, release.properties,
