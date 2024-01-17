@@ -6,7 +6,7 @@
   <artifactId>maven-tutorial</artifactId>
 <!--   &#45; equals a dash -->
 <!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml -->
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
 
   <scm>
 <!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
@@ -40,7 +40,7 @@
 <!--    xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='scm']/*[local-name()='developerConnection']/text()" pom.xml -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
-    <tag>rel_1.0</tag>
+    <tag>@{project.version}</tag>
   </scm>
 
   <properties>
