@@ -40,7 +40,7 @@
 <!--    xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='scm']/*[local-name()='developerConnection']/text()" pom.xml -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
-    <tag>@{project.version}</tag>
+    <tag>rel_@{project.version}</tag>
   </scm>
 
   <properties>
