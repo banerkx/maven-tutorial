@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <groupId>com.jetbrains.marco</groupId>
   <artifactId>maven-tutorial</artifactId>
 <!--   &#45; equals a dash -->
 <!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml -->
-  <version>1.0-SNAPSHOT</version>
-  
+  <version>1.0</version>
+
   <scm>
 <!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
 <!-- To do a dry run, use: -->
@@ -39,15 +39,15 @@
 <!-- So reading in this pre-defined variable from the environment to get the project url. -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
-    <tag>@{project.version}</tag>
+    <tag>1.0</tag>
   </scm>
-  
+
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit.version>5.8.2</junit.version>
   </properties>
-  
+
   <build>
     <plugins>
       <plugin>
@@ -108,7 +108,7 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <dependencies>
     <dependency>
       <groupId>com.mpatric</groupId>
@@ -140,6 +140,6 @@
       </exclusions>
     </dependency>
   </dependencies>
-  
+
 </project>
 
