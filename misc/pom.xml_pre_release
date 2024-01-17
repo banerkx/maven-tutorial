@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  
   <groupId>com.jetbrains.marco</groupId>
   <artifactId>maven-tutorial</artifactId>
 <!--   &#45; equals a dash -->
 <!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml -->
   <version>1.0-SNAPSHOT</version>
-
+  
   <scm>
 <!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
 <!-- To do a dry run, use: -->
@@ -42,13 +42,13 @@
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
     <tag>@{project.version}</tag>
   </scm>
-
+  
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit.version>5.8.2</junit.version>
   </properties>
-
+  
   <build>
     <plugins>
       <plugin>
@@ -64,7 +64,8 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>3.0.1</version>
         <configuration>
-          <tagNameFormat>@{project.version}</tagNameFormat>
+          <tagNameFormat>rel_@{project.version}</tagNameFormat>
+          <remoteTagging>false</remoteTagging>
 <!-- Do not want the maven plugin to fail if the following files are modified: -->
           <checkModificationExcludes>
             <checkModificationExclude>pom.xml</checkModificationExclude>
@@ -109,7 +110,7 @@
       </plugin>
     </plugins>
   </build>
-
+  
   <dependencies>
     <dependency>
       <groupId>com.mpatric</groupId>
@@ -141,6 +142,6 @@
       </exclusions>
     </dependency>
   </dependencies>
-
+  
 </project>
 
