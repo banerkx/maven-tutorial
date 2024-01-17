@@ -6,7 +6,7 @@
   <artifactId>maven-tutorial</artifactId>
 <!--   &#45; equals a dash -->
 <!-- xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='version']/text()" pom.xml -->
-  <version>1.0</version>
+  <version>1.0-SNAPSHOT</version>
 
   <scm>
 <!-- See: https://maven.apache.org/maven-release/maven-release-plugin/ -->
@@ -40,7 +40,7 @@
 <!--    xmllint [dash][dash]xpath "/*[local-name()='project']/*[local-name()='scm']/*[local-name()='developerConnection']/text()" pom.xml -->
 <!--     <developerConnection>scm:git:${env.CI_PROJECT_URL}</developerConnection> -->
     <developerConnection>scm:git:https://gitlab.com/banerkx/maven-tutorial.git</developerConnection>
-    <tag>1.0</tag>
+    <tag>@{project.version}</tag>
   </scm>
 
   <properties>
@@ -64,7 +64,8 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>3.0.1</version>
         <configuration>
-          <tagNameFormat>@{project.version}</tagNameFormat>
+          <tagNameFormat>rel_@{project.version}</tagNameFormat>
+          <remoteTagging>false</remoteTagging>
 <!-- Do not want the maven plugin to fail if the following files are modified: -->
           <checkModificationExcludes>
             <checkModificationExclude>pom.xml</checkModificationExclude>
