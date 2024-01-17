@@ -35,6 +35,7 @@ creates
 -----------------------------------------------------------------------
 
 mvn release:perform -DdryRun
+mvn release:perform -DconnectionUrl=https://github.com/banerkx/maven-tutorial.git
 
 shows:
   the perform actions
