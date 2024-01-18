@@ -34,6 +34,7 @@ creates
     exec.pomFileName=pom.xml
 -----------------------------------------------------------------------
 
+git status --porcelain=1 | wc -l
 mvn release:perform -DdryRun
 mvn release:perform -DdryRun -DconnectionUrl=https://github.com/banerkx/maven-tutorial.git
 
