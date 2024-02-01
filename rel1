@@ -5,7 +5,8 @@ declare -r SCRIPT=${0##*/}
 # ${1} - release version
 function rel_prepare_dry_run
 {
-  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
+##  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
+  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}"
   local -ir stat=${?}
 
   if [[ 0 -eq ${stat} ]]
@@ -57,3 +58,6 @@ then
 else
   rel_prepare_dry_run 9.9.9
 fi
+
+rel_perform_dry_run
+
