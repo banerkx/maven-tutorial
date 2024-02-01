@@ -1,0 +1,37 @@
+#!/bin/bash
+
+##declare -r SCRIPT=${0##*/}
+
+# ${1} - release version
+function rel_preapre_dry_run
+{
+  mvn --batch-mode release:prepare -DdryRun -DreleaseVersion="${1}"
+
+  echo "LINE = [${LINENO}] RELEASE = [${1}]"
+  echo ''
+
+  echo "pom.xml vs. pom.xml.next"
+  diff pom.xml pom.xml.next
+  echo ''
+
+  echo "pom.xml vs. pom.xml.tag"
+  diff pom.xml pom.xml.tag
+  echo ''
+
+  echo "pom.xml vs. pom.xml.releaseBackup"
+  diff pom.xml pom.xml.releaseBackup
+  echo ''
+}
+
+function rel_clean
+{
+  mvn release:clean
+}
+
+################################################################################
+# "main"                                                                       #
+################################################################################
+clear
+rel_clean
+
+rel_preapre_dry_run 9.9.9
