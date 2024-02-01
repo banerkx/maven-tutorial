@@ -69,6 +69,7 @@
 <!-- Do not want the maven plugin to fail if the following files are modified: -->
           <checkModificationExcludes>
             <checkModificationExclude>pom.xml</checkModificationExclude>
+            <checkModificationExclude>rel1</checkModificationExclude>
           </checkModificationExcludes>
         </configuration>
       </plugin>

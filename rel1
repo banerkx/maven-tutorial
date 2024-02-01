@@ -1,26 +1,43 @@
 #!/bin/bash
 
-##declare -r SCRIPT=${0##*/}
+declare -r SCRIPT=${0##*/}
 
 # ${1} - release version
-function rel_preapre_dry_run
+function rel_prepare_dry_run
 {
-  mvn --batch-mode release:prepare -DdryRun -DreleaseVersion="${1}"
+  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
+  local -ir stat=${?}
 
-  echo "LINE = [${LINENO}] RELEASE = [${1}]"
-  echo ''
+  if [[ 0 -eq ${stat} ]]
+  then
+    echo "LINE = [${LINENO}] RELEASE = [${1}]"
+    echo ''
 
-  echo "pom.xml vs. pom.xml.next"
-  diff pom.xml pom.xml.next
-  echo ''
+    echo "pom.xml vs. pom.xml.next"
+    diff pom.xml pom.xml.next
+    echo ''
 
-  echo "pom.xml vs. pom.xml.tag"
-  diff pom.xml pom.xml.tag
-  echo ''
+    echo "pom.xml vs. pom.xml.tag"
+    diff pom.xml pom.xml.tag
+    echo ''
 
-  echo "pom.xml vs. pom.xml.releaseBackup"
-  diff pom.xml pom.xml.releaseBackup
-  echo ''
+    echo "pom.xml vs. pom.xml.releaseBackup"
+    diff pom.xml pom.xml.releaseBackup
+    echo ''
+  else
+    echo "[${SCRIPT}] ERROR: [mvn release:prepare -DdryRun] exited with code [${stat}]."
+    exit "${stat}"
+  fi
+}
+
+function rel_perform_dry_run
+{
+  mvn release:perform -DdryRun
+  local -i stat=0
+  if [[ 0 -ne ${stat} ]]
+  then
+    echo "[${SCRIPT}] ERROR: [mvn release:perform -DdryRun] exited with code [${stat}]."
+  fi
 }
 
 function rel_clean
@@ -34,4 +51,9 @@ function rel_clean
 clear
 rel_clean
 
-rel_preapre_dry_run 9.9.9
+if [[ 1 -eq ${#} ]]
+then
+  rel_prepare_dry_run "${1}"
+else
+  rel_prepare_dry_run 9.9.9
+fi
