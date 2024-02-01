@@ -6,7 +6,7 @@ declare -r SCRIPT=${0##*/}
 function rel_prepare_dry_run
 {
 ##  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
-  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}"
+  mvn --batch-mode -DskipTests release:prepare -DdryRun -DreleaseVersion="${1}"
   local -ir stat=${?}
 
   if [[ 0 -eq ${stat} ]]
