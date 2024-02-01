@@ -51,6 +51,7 @@ function rel_clean
 ################################################################################
 clear
 rel_clean
+clear
 
 if [[ 1 -eq ${#} ]]
 then
@@ -59,5 +60,5 @@ else
   rel_prepare_dry_run 9.9.9
 fi
 
-rel_perform_dry_run
+##rel_perform_dry_run
 
