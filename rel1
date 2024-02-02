@@ -11,8 +11,6 @@ function rel_prepare_dry_run
 
   if [[ 0 -eq ${stat} ]]
   then
-    echo "LINE = [${LINENO}] RELEASE = [${1}]"
-    echo ''
 
     echo "pom.xml vs. pom.xml.next"
     diff pom.xml pom.xml.next
@@ -24,6 +22,9 @@ function rel_prepare_dry_run
 
     echo "pom.xml vs. pom.xml.releaseBackup"
     diff pom.xml pom.xml.releaseBackup
+    echo ''
+
+    echo "LINE = [${LINENO}] RELEASE = [${1}]"
     echo ''
   else
     echo "[${SCRIPT}] ERROR: [mvn release:prepare -DdryRun] exited with code [${stat}]."
