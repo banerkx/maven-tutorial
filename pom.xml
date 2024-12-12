@@ -47,6 +47,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <junit.version>5.8.2</junit.version>
+    <java.major.version>11</java.major.version>
   </properties>
 
   <build>
@@ -81,19 +82,29 @@
         <executions>
           <execution>
 <!-- Use: -->
-<!--     mvn validate -->
+<!--     mvn validate or mvn -f pom.xml validate -Dgoal=run -->
+            <id>print-properties</id>
+<!-- This <phase> must already exist in a plugin. -->
             <phase>validate</phase>
             <goals>
+<!-- This goal must exist in the maven-antrun-plugin plugin. -->
               <goal>run</goal>
             </goals>
             <configuration>
               <target>
                 <echo>project.scm.developerConnection = [${project.scm.developerConnection}]</echo>
+                <echo>project.basedir = [${project.basedir}]</echo>
+                <echo>java.version = [${java.version}]</echo>
+                <echo>java.major.version = [${java.major.version}]</echo>
+<!--                 <xmltask source="${project.basedir}/pom2.xml" dest="${project.basedir}/pom2.xml"> -->
+<!--                   <delete path="/project/version"/> -->
+<!--                 </xmltask> -->
               </target>
             </configuration>
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
