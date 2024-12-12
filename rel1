@@ -7,6 +7,7 @@ function rel_prepare_dry_run
 {
 ##  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
   mvn --batch-mode -DskipTests release:prepare -DdryRun -DreleaseVersion="${1}"
+  cmd //c "tree /a /f" target
   local -ir stat=${?}
 
   if [[ 0 -eq ${stat} ]]
@@ -20,9 +21,9 @@ function rel_prepare_dry_run
     diff pom.xml pom.xml.tag
     echo ''
 
-    echo "pom.xml vs. pom.xml.releaseBackup"
-    diff pom.xml pom.xml.releaseBackup
-    echo ''
+##    echo "pom.xml vs. pom.xml.releaseBackup"
+##    diff pom.xml pom.xml.releaseBackup
+##    echo ''
 
     echo "LINE = [${LINENO}] RELEASE = [${1}]"
     echo ''
@@ -42,8 +43,49 @@ function rel_perform_dry_run
   fi
 }
 
+# ${1} - release version
+function rel_prepare
+{
+##  mvn --batch-mode -DskipTests=true release:prepare -DdryRun -DreleaseVersion="${1}" -DdevelopmentVersion=1.0-SNAPSHOT
+  mvn --batch-mode -DskipTests release:prepare -DdryRun -DreleaseVersion="${1}"
+  local -ir stat=${?}
+
+  if [[ 0 -eq ${stat} ]]
+  then
+
+    echo "pom.xml vs. pom.xml.next"
+    diff pom.xml pom.xml.next
+    echo ''
+
+    echo "pom.xml vs. pom.xml.tag"
+    diff pom.xml pom.xml.tag
+    echo ''
+
+##    echo "pom.xml vs. pom.xml.releaseBackup"
+##    diff pom.xml pom.xml.releaseBackup
+##    echo ''
+
+    echo "LINE = [${LINENO}] RELEASE = [${1}]"
+    echo ''
+  else
+    echo "[${SCRIPT}] ERROR: [mvn release:prepare] exited with code [${stat}]."
+    exit "${stat}"
+  fi
+}
+
+function rel_perform
+{
+  mvn release:perform
+  local -i stat=0
+  if [[ 0 -ne ${stat} ]]
+  then
+    echo "[${SCRIPT}] ERROR: [mvn release:perform] exited with code [${stat}]."
+  fi
+}
+
 function rel_clean
 {
+  mvn clean
   mvn release:clean
 }
 
@@ -58,7 +100,7 @@ if [[ 1 -eq ${#} ]]
 then
   rel_prepare_dry_run "${1}"
 else
-  rel_prepare_dry_run 9.9.9
+  rel_prepare_dry_run 1.2.3
 fi
 
 ##rel_perform_dry_run
